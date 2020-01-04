@@ -100,7 +100,7 @@ async function sendTelegramMessages (newProducts) {
   const messages = newProducts.map(product => telegram.sendPhoto({
     photoUrl: product.img,
     caption: `<a href="${product.link}">${product.name} - ${product.price}</a>`,
-    chatId: '-396960664'
+    chatId: config.telegramId
   }))
 
   return Promise.all(messages)
