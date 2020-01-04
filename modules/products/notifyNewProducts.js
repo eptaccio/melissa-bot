@@ -1,7 +1,7 @@
-const { compare } = require('./compare')
-const { config } = require('./config')
+const { compare } = require('../../lib/compare')
+const { config } = require('../../config')
 const { Product } = require('./product')
-const { telegram } = require('./telegram')
+const { telegram } = require('../../lib/telegram')
 const axios = require('axios')
 const cheerio = require('cheerio')
 
@@ -106,7 +106,7 @@ async function sendTelegramMessages (newProducts) {
   return Promise.all(messages)
 }
 
-async function getUpdates () {
+async function notifyNewProducts () {
   const pages = await getPages({})
   const currentProducts = await getCurrentProducts(pages)
 
@@ -126,5 +126,5 @@ async function getUpdates () {
 }
 
 module.exports = {
-  getUpdates
+  notifyNewProducts
 }
